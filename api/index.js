@@ -39,6 +39,12 @@ app.use("/api/users", userRoute);
 app.use("/api/products", productRoute);
 app.use("/api/carts", cartRoute);
 app.use("/api/orders", orderRoute);
+
+app.use("/dist", express.static(path.join(__dirname, '/client/build')));
+
+app.get('*', (req, res) => {
+   res.sendFile(path.join(__dirname, '/client/build', 'index.html'))
+})
 //app.get("api/products?category=men", productRoute);
 
 //app.get('/user/:id', function (req, res, next) {
